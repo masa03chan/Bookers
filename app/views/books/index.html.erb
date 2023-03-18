@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Body</th>
+<th>Body</th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +25,15 @@
 </table>
 
 <h1>New book</h1>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>  
+<% end %>
+
 <%= form_with model:Book.new do |f| %>
   <div class= "text-box">
     <h5>Title</h5>
